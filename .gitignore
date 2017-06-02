@@ -14,4 +14,4 @@ CVS
 ._*
 
 # application
-build/*
+build/*.js
