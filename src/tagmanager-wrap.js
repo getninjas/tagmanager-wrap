@@ -1,13 +1,14 @@
 
 const defaultOptions = {
   virtualPageViewEvent: 'virtual_pageview',
-  startPush: null,
-  addExperiments: null,
+  startPush: {},
+  addExperiments: [],
 };
 
 export default class TagManager {
   constructor(dataLayer, params = defaultOptions) {
     this.options = Object.assign(defaultOptions, params);
+    this.dataLayer = dataLayer || [];
     this.addExperiments();
     this.dataLayer.push(this.options.startPush);
   }
