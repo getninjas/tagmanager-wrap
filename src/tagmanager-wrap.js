@@ -1,7 +1,9 @@
 
 const defaultOptions = {
   virtualPageViewEvent: 'virtual_pageview',
-  startPush: {},
+  startPush: {
+    experiements: [],
+  },
   addExperiments: [],
 };
 
@@ -22,7 +24,7 @@ export default class TagManager {
   }
 
   experiments() {
-    return (this.options.startPush.experiments || []).concat(this.options.addExperiments);
+    return this.options.startPush.experiments.concat(this.options.addExperiments);
   }
 
   prependExperiment(experiment) {
