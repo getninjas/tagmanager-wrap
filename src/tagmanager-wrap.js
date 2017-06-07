@@ -24,7 +24,12 @@ export default class TagManager {
   }
 
   experiments() {
-    return this.options.startPush.experiments.concat(this.options.addExperiments);
+    this.options.startPush.experiments = [
+      this.options.startPush.experiments,
+      ...this.options.addExperiments,
+    ];
+
+    return this.options.startPush.experiments;
   }
 
   prependExperiment(experiment) {
@@ -33,7 +38,8 @@ export default class TagManager {
         experiments: [experiment],
       });
 
-      this.dataLayer.unshift(dataLayer);
+      this.dataLayer[0].experiments = [dataLayer, ...this.dataLayer[0].experiments];
+
       return this.dataLayer[0].experiments;
     }
 
