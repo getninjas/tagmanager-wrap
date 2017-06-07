@@ -11,11 +11,11 @@ export default class TagManager {
   constructor(dataLayer, params = defaultOptions) {
     this.options = Object.assign(defaultOptions, params);
     this.dataLayer = dataLayer || [];
-    this.addExperiments();
+    this.setupExperiments();
     this.dataLayer.push(this.options.startPush);
   }
 
-  addExperiments() {
+  setupExperiments() {
     Object.assign(this.options.startPush, {
       experiments: this.experiments(),
     });
