@@ -66,10 +66,17 @@ export default class TagManager {
     return this.dataLayer.push(obj);
   }
 
-  bindEvents($) {
-    if (!$) throw new Error('jQuery must be passed here');
+  bindEvents() {
+    const gtmElements = document.querySelectorAll('[data-gtm-event="ga-event"]');
 
-    $('[data-gtm-event=\'ga-event\']').on('click.ga-event', this.clickGAEvent.bind(this));
+    gtmElements.forEach(function (el) {
+      if (!el.getAttribute('data-gtm-bind')) {
+        el.addEventListener('click', this.clickGAEvent.bind(this));
+        el.setAttribute('data-gtm-binded', true);
+      }
+    }, this);
+
+    return gtmElements;
   }
 
   clickGAEvent(event) {
