@@ -23,7 +23,7 @@
     "postversion": "git push && git push --tags",
     "config": "npm config set progress=false && npm config set git-tag-version=true",
     "clear": "rm -rf ./build/*",
-    "lint": "eslint -c .eslintrc src/*.js",
+    "lint": "eslint -c .eslintrc.json src/*.js",
     "build:js:prod": "BABEL_ENV=production babel src/tagmanager-wrap.js -o dist/tagmanager-wrap.min.js",
     "build:js": "babel src -d build",
     "build:dev": "npm run build:js",
