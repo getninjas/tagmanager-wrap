@@ -1,8 +1,7 @@
 import TagManager from '../src/tagmanager-wrap';
 
 describe('Tagmanager', () => {
-
-  let tagManager = new TagManager([], {
+  const tagManager = new TagManager([], {
     gtmId: 'GTM-T2HGD',
     startPush: {
       page_type: 'pages:demo',
