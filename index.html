@@ -8,9 +8,11 @@
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css" data-noprefix />
   <link href="demo.css" rel="stylesheet" />
   <script src="node_modules/prismjs/prism.js"></script>
-  <script src="./dist/tagmanager-wrap.js"></script>  
+  <script src="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>  
+  <script src="./dist/tagmanager-wrap.js"></script>
 </head>
 
 <body>
@@ -21,18 +23,15 @@
   </div>
   
   <pre>
-      <code class="language-javascript">
-        var tagManagerDataLayer = [];
-        tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
-          gtmId: 'GTM-T2HGD',
-          startPush: {
-            page_type: "pages:home",
-            path_category: "reformas-e-reparos/pedreiro",
-            experiments: window.experiments || []
-          }
-        });
-      </code>
-    </pre>
+  <code class="language-javascript line-numbers">var tagManagerDataLayer = [];
+  tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
+    gtmId: 'GTM-T2HGD',
+    startPush: {
+      page_type: "pages:home",
+      path_category: "reformas-e-reparos/pedreiro",
+      experiments: window.experiments || []
+    }
+  });</code></pre>
   <br>
   <br>
   <div class="title">
@@ -40,20 +39,17 @@
   </div> 
   
   <pre>
-      <code class="language-javascript">
-        var TagManager = require('tagmanagerWrap');
-        
-        var tagManagerDataLayer = [];
-        var tagManager = new TagManager(tagManagerDataLayer, {
-          gtmId: 'GTM-T2HGD',
-          startPush: {
-            page_type: "pages:home",
-            path_category: "reformas-e-reparos/pedreiro",
-            experiments: window.experiments || []
-          }
-        });
-      </code>
-    </pre>
+  <code class="language-javascript line-numbers">var TagManager = require('tagmanagerWrap');
+    
+    var tagManagerDataLayer = [];
+    var tagManager = new TagManager(tagManagerDataLayer, {
+      gtmId: 'GTM-T2HGD',
+      startPush: {
+        page_type: "pages:home",
+        path_category: "reformas-e-reparos/pedreiro",
+        experiments: window.experiments || []
+      }
+  });</code></pre>
   <br>  
   <div class="title">
     <h3>eventCategory</h3>
@@ -61,17 +57,14 @@
   </div>
   
   <pre>
-    <code class="language-javascript">
-    var btnEventCategory = document.getElementsByClassName('eventCategory')[0];
-    btnEventCategory.addEventListener('click', function () {
+  <code class="language-javascript line-numbers">var btnEventCategory = document.getElementsByClassName('eventCategory')[0];
+  btnEventCategory.addEventListener('click', function () {
 
-      tagManager.eventCategory("pre-fill", {
-        eventAction: "success"
-      });
-      console.log(tagManager);
+    tagManager.eventCategory("pre-fill", {
+      eventAction: "success"
     });
-    </code>
-  </pre>
+    console.log(tagManager);
+  });</code></pre>
   <br>
   <div class="title">
     <h3>prependExperiment</h3>
@@ -79,24 +72,21 @@
   </div>
   
   <pre>
-    <code class="language-javascript">
-    var btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
-    btnPrependExperiment.addEventListener('click', function () {
+  <code class="language-javascript line-numbers">var btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
+  btnPrependExperiment.addEventListener('click', function () {
 
-      tagManager.prependExperiment({
-        experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
-        experimentGoal: 'request conversion rate',
-        experimentId: 'popup-user-leaves-request',
-        experimentPageCategory: ['all'],
-        experimentPageType: ['categories'],
-        experimentTool: 'Abba',
-        experimentType: 'page',
-        experimentVersion: 'demo',
-      });
-      console.log(tagManager);
+    tagManager.prependExperiment({
+      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+      experimentGoal: 'request conversion rate',
+      experimentId: 'popup-user-leaves-request',
+      experimentPageCategory: ['all'],
+      experimentPageType: ['categories'],
+      experimentTool: 'Abba',
+      experimentType: 'page',
+      experimentVersion: 'demo',
     });
-    </code>
-  </pre>
+    console.log(tagManager);
+  });</code></pre>
   <br>
   <div class="title">
     <h3>virtualPageView</h3>
@@ -104,15 +94,12 @@
   </div>
   
   <pre>
-      <code class="language-javascript">
-      var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
-      btnVirtualPageView.addEventListener('click', function () {
+  <code class="language-javascript line-numbers">var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
+  btnVirtualPageView.addEventListener('click', function () {
 
-        tagManager.virtualPageView("/profile/created");
-        console.log(tagManager);
-      });
-      </code>
-  </pre>
+    tagManager.virtualPageView("/profile/created");
+    console.log(tagManager);
+  });</code></pre>
   <br>
   <div class="title">
     <h3>custom Obj</h3>
@@ -120,19 +107,15 @@
   </div>
   
   <pre>
-    <code class="language-javascript">
-    var btnCustomObj = document.getElementsByClassName('customObj')[0];
-    btnCustomObj.addEventListener('click', function () {
+  <code class="language-javascript line-numbers">var btnCustomObj = document.getElementsByClassName('customObj')[0];
+  btnCustomObj.addEventListener('click', function () {
 
-      tagManager.custom({
-        user_id: 123,
-        event: 'user_info'
-      });
-      console.log(tagManager);
+    tagManager.custom({
+      user_id: 123,
+      event: 'user_info'
     });
-    </code>
-  </pre>
-
+    console.log(tagManager);
+  });</code></pre>
   <script src="demo.js"></script>
 </body>
 
