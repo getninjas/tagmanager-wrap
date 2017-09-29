@@ -73,11 +73,15 @@
       this.options = _extends({}, defaultOptions, params);
       this.dataLayer = dataLayer || [];
       this.dataLayer.push(this.options.startPush);
-      this.appendAsyncScript();
-      this.appendNoScriptFallBack();
     }
 
     _createClass(TagManager, [{
+      key: 'init',
+      value: function init() {
+        this.appendAsyncScript();
+        this.appendNoScriptFallBack();
+      }
+    }, {
       key: 'appendAsyncScript',
       value: function appendAsyncScript() {
         var script = document.createElement('script');
