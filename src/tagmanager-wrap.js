@@ -1,5 +1,6 @@
 
 const defaultOptions = {
+  gtmId: 'xxxx',
   virtualPageViewEvent: 'virtual_pageview',
   startPush: {
     experiements: [],
