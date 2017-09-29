@@ -85,13 +85,40 @@ describe('Tagmanager', () => {
     });
 
     afterEach(() => {
-      tagManager.dataLayer[0].experiments = [];
+      tagManager.dataLayer = [];
     });
 
     it('preppends virtualPageView', () => {
-      tagManager.virtualPageView('/profile/created');
+      expect(tagManager.dataLayer.length).toEqual(2);
+    });
 
-      expect(tagManager.dataLayer[1].vpname).toEqual('/profile/created');
+    it('has vpname', () => {
+      expect(tagManager.dataLayer[0].vpname).toEqual('/profile/created');
+    });
+  });
+
+  describe('.eventCategory', () => {
+    beforeEach(() => {
+      tagManager.init();
+      tagManager.eventCategory('pre-fill', {
+        eventAction: 'success',
+      });
+    });
+
+    it('preppends eventCategory', () => {
+      expect(tagManager.dataLayer.length).toEqual(1);
+    });
+
+    it('has event', () => {
+      expect(tagManager.dataLayer[0].event).toEqual('GAEvent');
+    });
+
+    it('has eventCategory', () => {
+      expect(tagManager.dataLayer[0].eventCategory).toEqual('pre-fill');
+    });
+
+    it('has eventAction', () => {
+      expect(tagManager.dataLayer[0].eventAction).toEqual('success');
     });
   });
 });
