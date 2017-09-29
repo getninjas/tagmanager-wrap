@@ -1,6 +1,6 @@
 
 const defaultOptions = {
-  gtmId: 'xxxx',
+  gtmId: 'GTM-T2HGD', // homolog
   virtualPageViewEvent: 'virtual_pageview',
   startPush: {
     experiements: [],
@@ -10,21 +10,11 @@ const defaultOptions = {
 
 export default class TagManager {
   constructor(dataLayer, params = defaultOptions) {
-    this.options = Object.assign(defaultOptions, params);
+    this.options = Object.assign({}, defaultOptions, params);
     this.dataLayer = dataLayer || [];
-    this.setupExperiments();
     this.dataLayer.push(this.options.startPush);
-
     this.appendAsyncScript();
     this.appendNoScriptFallBack();
-  }
-
-  setupExperiments() {
-    Object.assign(this.options.startPush, {
-      experiments: this.experiments(),
-    });
-
-    return this;
   }
 
   appendAsyncScript() {
@@ -45,27 +35,8 @@ export default class TagManager {
     document.body.appendChild(noScript);
   }
 
-  experiments() {
-    this.options.startPush.experiments = [
-      this.options.startPush.experiments,
-      ...this.options.addExperiments,
-    ];
-
-    return this.options.startPush.experiments;
-  }
-
   prependExperiment(experiment) {
-    if (this.dataLayer[0].experiments) {
-      const dataLayer = Object.assign({}, this.options.startPush, {
-        experiments: [experiment],
-      });
-
-      this.dataLayer[0].experiments = [dataLayer, ...this.dataLayer[0].experiments];
-
-      return this.dataLayer[0].experiments;
-    }
-
-    return this.dataLayer[0].experiments.push(experiment);
+    this.dataLayer[0].experiments.push(experiment);
   }
 
   virtualPageView(vpname, event) {

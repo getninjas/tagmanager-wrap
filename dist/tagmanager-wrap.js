@@ -17,18 +17,6 @@
     value: true
   });
 
-  function _toConsumableArray(arr) {
-    if (Array.isArray(arr)) {
-      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-        arr2[i] = arr[i];
-      }
-
-      return arr2;
-    } else {
-      return Array.from(arr);
-    }
-  }
-
   var _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
@@ -82,25 +70,14 @@
 
       _classCallCheck(this, TagManager);
 
-      this.options = _extends(defaultOptions, params);
+      this.options = _extends({}, defaultOptions, params);
       this.dataLayer = dataLayer || [];
-      this.setupExperiments();
       this.dataLayer.push(this.options.startPush);
-
       this.appendAsyncScript();
       this.appendNoScriptFallBack();
     }
 
     _createClass(TagManager, [{
-      key: 'setupExperiments',
-      value: function setupExperiments() {
-        _extends(this.options.startPush, {
-          experiments: this.experiments()
-        });
-
-        return this;
-      }
-    }, {
       key: 'appendAsyncScript',
       value: function appendAsyncScript() {
         var script = document.createElement('script');
@@ -121,26 +98,9 @@
         document.body.appendChild(noScript);
       }
     }, {
-      key: 'experiments',
-      value: function experiments() {
-        this.options.startPush.experiments = [this.options.startPush.experiments].concat(_toConsumableArray(this.options.addExperiments));
-
-        return this.options.startPush.experiments;
-      }
-    }, {
       key: 'prependExperiment',
       value: function prependExperiment(experiment) {
-        if (this.dataLayer[0].experiments) {
-          var dataLayer = _extends({}, this.options.startPush, {
-            experiments: [experiment]
-          });
-
-          this.dataLayer[0].experiments = [dataLayer].concat(_toConsumableArray(this.dataLayer[0].experiments));
-
-          return this.dataLayer[0].experiments;
-        }
-
-        return this.dataLayer[0].experiments.push(experiment);
+        this.dataLayer[0].experiments.push(experiment);
       }
     }, {
       key: 'virtualPageView',
