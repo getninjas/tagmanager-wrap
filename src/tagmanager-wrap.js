@@ -13,6 +13,9 @@ export default class TagManager {
     this.options = Object.assign({}, defaultOptions, params);
     this.dataLayer = dataLayer || [];
     this.dataLayer.push(this.options.startPush);
+  }
+
+  init() {
     this.appendAsyncScript();
     this.appendNoScriptFallBack();
   }

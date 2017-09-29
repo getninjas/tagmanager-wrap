@@ -8,6 +8,8 @@ tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
   },
 });
 
+tagManager.init();
+
 const btnEventCategory = document.getElementsByClassName('eventCategory')[0];
 btnEventCategory.addEventListener('click', () => {
   tagManager.eventCategory('pre-fill', {
