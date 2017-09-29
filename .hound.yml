@@ -2,3 +2,5 @@ eslint:
   enabled: true
   ignore_file: .eslintignore
   config_file: .eslintrc.json
+jshint:
+  config_file: .jshintrc
