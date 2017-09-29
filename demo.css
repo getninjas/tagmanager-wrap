@@ -10,10 +10,6 @@ body {
   box-sizing: border-box;
 }
 
-hr {
-  border: 1px solid;
-}
-
 button {
   font-size: 12px;
   padding: 14px;
