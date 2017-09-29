@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" />
+  <link href="demo.css" rel="stylesheet" />
   <script src="node_modules/prismjs/prism.js"></script>
   <script src="./dist/tagmanager-wrap.js"></script>
 </head>
@@ -14,7 +16,10 @@
 <body>
   <h1>TagManager</h1>
   <br>
-  <h3>Init (Global)</h3>
+  <div class="title">
+    <h3>Init (Global)</h3>
+    <button>code</button>
+  </div>
   <hr>
   <pre>
       <code class="language-javascript">
@@ -31,7 +36,9 @@
     </pre>
   <br>
   <br>
-  <h3>Init (CommonJs)</h3>
+  <div class="title">
+    <h3>Init (CommonJs)</h3>
+  </div> 
   <hr>
   <pre>
       <code class="language-javascript">
@@ -49,9 +56,11 @@
       </code>
     </pre>
   <br>  
-  <h3>eventCategory</h3>
+  <div class="title">
+    <h3>eventCategory</h3>
+    <button type="button" class="eventCategory">Run</button>
+  </div>
   <hr>
-  <button type="button" class="eventCategory">Run</button>
   <pre>
     <code class="language-javascript">
     var btnEventCategory = document.getElementsByClassName('eventCategory')[0];
@@ -65,9 +74,11 @@
     </code>
   </pre>
   <br>
-  <h3>prependExperiment</h3>
+  <div class="title">
+    <h3>prependExperiment</h3>
+    <button type="button" class="prependExperiment">Run</button>
+  </div>
   <hr>
-  <button type="button" class="prependExperiment">Run</button>
   <pre>
     <code class="language-javascript">
     var btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
@@ -88,9 +99,11 @@
     </code>
   </pre>
   <br>
-  <h3>virtualPageView</h3>
+  <div class="title">
+    <h3>virtualPageView</h3>
+    <button type="button" class="virtualPageView">Run</button>
+  </div>
   <hr>
-  <button type="button" class="virtualPageView">Run</button>
   <pre>
       <code class="language-javascript">
       var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
@@ -102,9 +115,11 @@
       </code>
   </pre>
   <br>
-  <h3>custom Obj</h3>
+  <div class="title">
+    <h3>custom Obj</h3>
+    <button type="button" class="customObj">Run</button>
+  </div>
   <hr>
-  <button type="button" class="customObj">Run</button>
   <pre>
     <code class="language-javascript">
     var btnCustomObj = document.getElementsByClassName('customObj')[0];

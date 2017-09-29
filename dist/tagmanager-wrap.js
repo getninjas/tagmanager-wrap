@@ -56,7 +56,7 @@
   }();
 
   var defaultOptions = {
-    gtmId: 'xxxx',
+    gtmId: 'GTM-T2HGD', // homolog
     virtualPageViewEvent: 'virtual_pageview',
     startPush: {
       experiements: []
