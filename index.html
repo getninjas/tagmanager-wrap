@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./dist/tagmanager-wrap.js"></script>
+</head>
+
+<body>
+  <h1>TagManager Demo</h1>
+  <script>
+    var tagManagerDataLayer = [];
+    tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
+      gtmId: 'GTM-T2HGD',
+      startPush: {
+        startPush: { "page_type": "pages:home" },
+        addExperiments: window.experiments || []
+      }
+    });
+
+    window.tagManager.eventCategory("pre-fill", {
+      eventAction: "success"
+    });
+  </script>
+</body>
+
+</html>
