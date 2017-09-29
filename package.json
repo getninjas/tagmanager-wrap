@@ -37,6 +37,7 @@
     "babel-preset-airbnb": "^2.4.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-minify": "^0.2.0",
+    "babelify": "^7.3.0",
     "documentjs": "^0.4.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.3.2",
