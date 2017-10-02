@@ -1,4 +1,4 @@
 extends: "getninjas"
 globals:
- tagManager: true
- "__html_": true
+  tagManager: true
+  __html_: true
