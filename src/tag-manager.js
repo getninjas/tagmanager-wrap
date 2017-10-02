@@ -3,6 +3,7 @@ const test = null;
 const hello = "Hello";
 const byebye = "by by";
 const byebye111 = "by by";
+const byebye111222 = "by by";
 
 var TagManager = (function(dataLayer, options) {
   this.dataLayer = dataLayer || [];
