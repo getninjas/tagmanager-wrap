@@ -1,6 +1,6 @@
 
 const defaultOptions = {
-  gtmId: 'GTM-T2HGD', // homolog
+  gtmId: '111111', // homolog
   virtualPageViewEvent: 'virtual_pageview',
   startPush: {
     experiements: [],

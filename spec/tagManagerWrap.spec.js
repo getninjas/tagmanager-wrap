@@ -2,7 +2,7 @@ import TagManager from '../src/tagmanager-wrap';
 
 describe('Tagmanager', () => {
   const tagManager = new TagManager([], {
-    gtmId: 'GTM-T2HGD',
+    gtmId: '222222',
     startPush: {
       page_type: 'pages:demo',
       path_category: 'reformas-e-reparos/demo',
@@ -19,7 +19,7 @@ describe('Tagmanager', () => {
 
   describe('.defineProperties', () => {
     it('sets default properties', () => {
-      expect(tagManager.options.gtmId).toEqual('GTM-T2HGD');
+      expect(tagManager.options.gtmId).toEqual('222222');
       expect(tagManager.options.startPush.page_type).toEqual('pages:demo');
       expect(tagManager.options.startPush.path_category).toEqual('reformas-e-reparos/demo');
       expect(tagManager.options.virtualPageViewEvent).toEqual('virtual_pageview');
