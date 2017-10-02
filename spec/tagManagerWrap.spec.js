@@ -13,7 +13,7 @@ describe('Tagmanager', () => {
   describe('constructor', () => {
     it('defines default properties', () => {
       expect(tagManager.options).toBeDefined();
-      expect(tagManager.dataLayer.length).toBeDefined();
+      expect(tagManager.dataLayer).toBeDefined();
     });
   });
 
@@ -39,11 +39,11 @@ describe('Tagmanager', () => {
       tagManager.init();
     });
 
-    it('call appendAsyncScript', () => {
+    it('calls appendAsyncScript', () => {
       expect(tagManager.appendAsyncScript).toHaveBeenCalled();
     });
 
-    it('call appendNoScriptFallBack', () => {
+    it('calls appendNoScriptFallBack', () => {
       expect(tagManager.appendNoScriptFallBack).toHaveBeenCalled();
     });
   });
@@ -104,6 +104,10 @@ describe('Tagmanager', () => {
       });
     });
 
+    afterEach(() => {
+      tagManager.dataLayer = [];
+    });
+
     it('preppends eventCategory', () => {
       expect(tagManager.dataLayer.length).toEqual(1);
     });
@@ -118,6 +122,28 @@ describe('Tagmanager', () => {
 
     it('has eventAction', () => {
       expect(tagManager.dataLayer[0].eventAction).toEqual('success');
+    });
+  });
+
+  describe('.customObj', () => {
+    beforeEach(() => {
+      tagManager.init();
+      tagManager.custom({
+        user_id: 123,
+        event: 'user_info',
+      });
+    });
+
+    it('preppends customObj', () => {
+      expect(tagManager.dataLayer.length).toEqual(1);
+    });
+
+    it('has user_id', () => {
+      expect(tagManager.dataLayer[0].user_id).toEqual(123);
+    });
+
+    it('has event', () => {
+      expect(tagManager.dataLayer[0].event).toEqual('user_info');
     });
   });
 });
