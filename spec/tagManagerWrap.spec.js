@@ -154,13 +154,32 @@ describe('Tagmanager', () => {
 
     it('appends gtm-bind attribute', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
+      const btn = document.getElementsByClassName('btn')[0];
 
       tagManager.bindEvents();
 
-      const btn = document.getElementsByClassName('btn')[0];
       const attribute = btn.getAttribute('data-gtm-bind');
-
       expect(Boolean(attribute)).toEqual(true);
+    });
+  });
+
+  describe('.clickGAEvent', () => {
+    beforeEach(() => {
+      tagManager.init();
+    });
+
+    it('dispatches .eventCategory', () => {
+      document.body.innerHTML = __html__['spec/fixtures/index.html'];
+      spyOn(tagManager, 'eventCategory');
+
+      const btn = document.getElementsByClassName('btn')[0];
+      const evt = {
+        currentTarget: btn,
+      };
+
+      tagManager.clickGAEvent(evt);
+
+      expect(tagManager.eventCategory).toHaveBeenCalled();
     });
   });
 });
