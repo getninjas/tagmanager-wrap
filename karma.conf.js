@@ -20,7 +20,16 @@ const karmaConfig = function (conf) {
           'babelify',
           {
             presets: ['env'],
-            plugins: ['istanbul'],
+            plugins: [
+              [
+                'istanbul',
+                {
+                  exclude: [
+                    '**/*.spec.js',
+                  ],
+                },
+              ],
+            ],
           },
         ],
       ],
