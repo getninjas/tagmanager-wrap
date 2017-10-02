@@ -1,5 +1,5 @@
 {
-  "extends": "eslint:getninjas",
+  "extends": "eslint-config-getninjas",
   "globals": {
     "tagManager": true,
     "__html_": true
