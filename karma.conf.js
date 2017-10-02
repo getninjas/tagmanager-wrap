@@ -6,11 +6,13 @@ const karmaConfig = function (conf) {
     singleRun: true,
     concurrency: Infinity,
     files: [
+      'spec/**/*.html',
       'src/*.js',
       'spec/*.spec.js',
     ],
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine', 'browserify', 'fixture'],
     preprocessors: {
+      'spec/**/*.html': ['html2js'],
       'src/*.js': ['babel', 'browserify'],
       'spec/*.spec.js': ['babel', 'browserify'],
     },
@@ -54,6 +56,8 @@ const karmaConfig = function (conf) {
       ],
     },
     plugins: [
+      'karma-fixture',
+      'karma-html2js-preprocessor',
       'karma-babel-preprocessor',
       'karma-chrome-launcher',
       'karma-browserify',
