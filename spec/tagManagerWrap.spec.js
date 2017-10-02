@@ -146,4 +146,21 @@ describe('Tagmanager', () => {
       expect(tagManager.dataLayer[0].event).toEqual('user_info');
     });
   });
+
+  describe('.bindEvents', () => {
+    beforeEach(() => {
+      tagManager.init();
+    });
+
+    it('appends gtm-bind attribute', () => {
+      document.body.innerHTML = __html__['spec/fixtures/index.html'];
+
+      tagManager.bindEvents();
+
+      const btn = document.getElementsByClassName('btn')[0];
+      const attribute = btn.getAttribute('data-gtm-bind');
+
+      expect(Boolean(attribute)).toEqual(true);
+    });
+  });
 });

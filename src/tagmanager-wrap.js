@@ -68,7 +68,7 @@ export default class TagManager {
     gtmElements.forEach(function (el) {
       if (!el.getAttribute('data-gtm-bind')) {
         el.addEventListener('click', this.clickGAEvent.bind(this));
-        el.setAttribute('data-gtm-binded', true);
+        el.setAttribute('data-gtm-bind', true);
       }
     }, this);
 
