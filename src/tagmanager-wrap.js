@@ -76,7 +76,7 @@ export default class TagManager {
   }
 
   clickGAEvent(event) {
-    const el = event.curentTarget;
+    const el = event.currentTarget;
 
     const category = el.getAttribute('data-gtm-category');
     const eventAction = el.getAttribute('data-gtm-action') || null;
