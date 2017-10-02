@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/getninjas/tagmanager-wrap#readme",
   "scripts": {
-    "test": "set NODE_ENV=testing && karma start",
+    "test": "cross-env NODE_ENV=testing && karma start",
     "version": "npm run build:js:prod && git add -A dist",
     "postversion": "git push && git push --tags",
     "config": "npm config set progress=false && npm config set git-tag-version=true",
