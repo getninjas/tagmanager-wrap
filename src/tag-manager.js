@@ -1,6 +1,7 @@
 // testing
 const test = null;
 const hello = "Hello";
+const byebye = "by by";
 
 var TagManager = (function(dataLayer, options) {
   this.dataLayer = dataLayer || [];
