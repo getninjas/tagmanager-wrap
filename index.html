@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css" data-noprefix />
   <link href="demo.css" rel="stylesheet" />
   <script src="node_modules/prismjs/prism.js"></script>
-  <script src="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>  
+  <script src="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
   <script src="./dist/tagmanager-wrap.js"></script>
 </head>
 
@@ -21,7 +21,7 @@
   <div class="title">
     <h3>Init (Global)</h3>
   </div>
-  
+
   <pre>
   <code class="language-javascript line-numbers">var tagManagerDataLayer = [];
   tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
@@ -36,11 +36,11 @@
   <br>
   <div class="title">
     <h3>Init (CommonJs)</h3>
-  </div> 
-  
+  </div>
+
   <pre>
-  <code class="language-javascript line-numbers">var TagManager = require('tagmanagerWrap');
-    
+  <code class="language-javascript line-numbers">var TagManager = require('tagmanager-wrap');
+
     var tagManagerDataLayer = [];
     var tagManager = new TagManager(tagManagerDataLayer, {
       gtmId: 'GTM-T2HGD',
@@ -50,12 +50,30 @@
         experiments: window.experiments || []
       }
   });</code></pre>
-  <br>  
+  <br>
+  <br>
+  <div class="title">
+    <h3>Init (AMD)</h3>
+  </div>
+  <pre>
+  <code class="language-javascript line-numbers">define(['tagmanager-wrap'], function(TagManager){
+
+    var tagManagerDataLayer = [];
+    var tagManager = new TagManager(tagManagerDataLayer, {
+      gtmId: 'GTM-T2HGD',
+      startPush: {
+        page_type: "pages:home",
+        path_category: "reformas-e-reparos/pedreiro",
+        experiments: window.experiments || []
+      }
+    });
+  });</code></pre>
+  <br>
   <div class="title">
     <h3>eventCategory</h3>
     <button type="button" class="eventCategory">Run</button>
   </div>
-  
+
   <pre>
   <code class="language-javascript line-numbers">var btnEventCategory = document.getElementsByClassName('eventCategory')[0];
   btnEventCategory.addEventListener('click', function () {
@@ -70,7 +88,7 @@
     <h3>prependExperiment</h3>
     <button type="button" class="prependExperiment">Run</button>
   </div>
-  
+
   <pre>
   <code class="language-javascript line-numbers">var btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
   btnPrependExperiment.addEventListener('click', function () {
@@ -92,7 +110,7 @@
     <h3>virtualPageView</h3>
     <button type="button" class="virtualPageView">Run</button>
   </div>
-  
+
   <pre>
   <code class="language-javascript line-numbers">var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
   btnVirtualPageView.addEventListener('click', function () {
@@ -105,7 +123,7 @@
     <h3>custom Obj</h3>
     <button type="button" class="customObj">Run</button>
   </div>
-  
+
   <pre>
   <code class="language-javascript line-numbers">var btnCustomObj = document.getElementsByClassName('customObj')[0];
   btnCustomObj.addEventListener('click', function () {
