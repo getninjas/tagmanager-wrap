@@ -4,6 +4,7 @@ const hello = "Hello";
 const byebye = "by by";
 const byebye111 = "by by";
 const byebye111222 = "by by";
+const ola = "by by";
 
 var TagManager = (function(dataLayer, options) {
   this.dataLayer = dataLayer || [];
