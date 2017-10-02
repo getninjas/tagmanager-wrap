@@ -1,4 +1,5 @@
 // testing
+const test = null;
 
 var TagManager = (function(dataLayer, options) {
   this.dataLayer = dataLayer || [];
