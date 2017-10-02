@@ -1,4 +1,7 @@
-extends: "getninjas"
-globals:
-  tagManager: true
-  __html_: true
+{
+  "extends": "eslint:getninjas",
+  "globals": {
+    "tagManager": true,
+    "__html_": true
+  }
+}
