@@ -1,6 +1,6 @@
 
 const defaultOptions = {
-  gtmId: '111111', // homolog
+  gtmId: '111111',
   virtualPageViewEvent: 'virtual_pageview',
   startPush: {
     experiements: [],
@@ -9,9 +9,9 @@ const defaultOptions = {
 };
 
 export default class TagManager {
-  constructor(dataLayer, params = defaultOptions) {
+  constructor(dataLayer = [], params = defaultOptions) {
     this.options = Object.assign({}, defaultOptions, params);
-    this.dataLayer = dataLayer || [];
+    this.dataLayer = dataLayer;
     this.dataLayer.push(this.options.startPush);
   }
 
@@ -42,18 +42,18 @@ export default class TagManager {
     this.dataLayer[0].experiments.push(experiment);
   }
 
-  virtualPageView(vpname, event) {
+  virtualPageView(vpname, eventType) {
     this.dataLayer.push({
       vpname,
-      event: event || this.options.virtualPageViewEvent,
+      event: eventType || this.options.virtualPageViewEvent,
     });
   }
 
-  eventCategory(event, infos) {
+  eventCategory(eventCategory, infos = {}) {
     const categoryObj = Object.assign({
-      eventCategory: event,
+      eventCategory,
       event: 'GAEvent',
-    }, infos || {});
+    }, infos);
 
     return this.dataLayer.push(categoryObj);
   }
@@ -67,7 +67,7 @@ export default class TagManager {
 
     gtmElements.forEach(function (el) {
       if (!el.getAttribute('data-gtm-bind')) {
-        el.addEventListener('click', this.clickGAEvent.bind(this));
+        el.addEventListener('click', this._clickGAEvent.bind(this));
         el.setAttribute('data-gtm-bind', true);
       }
     }, this);
@@ -75,15 +75,29 @@ export default class TagManager {
     return gtmElements;
   }
 
-  clickGAEvent(event) {
-    const el = event.currentTarget;
+  _clickGAEvent(evt) {
+    const el = evt.currentTarget;
 
-    const category = el.getAttribute('data-gtm-category');
-    const eventAction = el.getAttribute('data-gtm-action') || null;
-    const eventLabel = el.getAttribute('data-gtm-label') || null;
-    const eventValue = el.getAttribute('data-gtm-value') || null;
-    const eventProperty = el.getAttribute('data-gtm-property') || null;
+    const category = this._getAttribute(el, 'data-gtm-category');
+    const props = this._getProps(el, ['action', 'label', 'value', 'property', 'ddd']);
 
-    this.eventCategory(category, { eventAction, eventLabel, eventValue, eventProperty });
+    this.eventCategory(category, props);
+  }
+
+  _getProps(el, keys) {
+    return keys.reduce((previousValue, currentValue) => {
+      const key = `event${this._captalize(currentValue)}`;
+      const val = this._getAttribute(el, `data-gtm-${currentValue}`);
+
+      return Object.assign({}, previousValue, { [key]: val });
+    }, {});
+  }
+
+  _captalize(word) {
+    return word && word[0].toUpperCase() + word.slice(1);
+  }
+
+  _getAttribute(el, attr) {
+    return el.getAttribute(attr) || null;
   }
 }
