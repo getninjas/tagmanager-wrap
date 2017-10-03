@@ -34,18 +34,20 @@ describe('Tagmanager', () => {
 
   describe('.init', () => {
     beforeEach(() => {
-      spyOn(tagManager, 'appendAsyncScript');
-      spyOn(tagManager, 'appendNoScriptFallBack');
-
+      document.body.innerHTML = __html__['spec/fixtures/index.html'];
       tagManager.init();
     });
 
-    it('calls appendAsyncScript', () => {
-      expect(tagManager.appendAsyncScript).toHaveBeenCalled();
+    it('appends async script', () => {
+      const scriptTag = document.querySelector('[data-id="google-tagmanager"]');
+
+      expect(scriptTag).not.toBeNull();
     });
 
-    it('calls appendNoScriptFallBack', () => {
-      expect(tagManager.appendNoScriptFallBack).toHaveBeenCalled();
+    it('appends noscript fallback', () => {
+      const noScript = document.querySelector('[data-id="noscript-google-tagmanager"]');
+
+      expect(noScript).not.toBeNull();
     });
   });
 
