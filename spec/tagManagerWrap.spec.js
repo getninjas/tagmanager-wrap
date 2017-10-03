@@ -36,6 +36,7 @@ describe('Tagmanager', () => {
     beforeEach(() => {
       spyOn(tagManager, 'appendAsyncScript');
       spyOn(tagManager, 'appendNoScriptFallBack');
+
       tagManager.init();
     });
 
@@ -53,7 +54,7 @@ describe('Tagmanager', () => {
     beforeEach(() => {
       tagManager.init();
       tagManager.prependExperiment({
-        experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+        experimentDescription: 'Description Experiment',
         experimentGoal: 'request conversion rate',
         experimentId: 'popup-user-leaves-request',
         experimentPageCategory: ['all'],
@@ -72,8 +73,8 @@ describe('Tagmanager', () => {
       expect(tagManager.dataLayer[0].experiments.length).toEqual(1);
     });
 
-    it('has description equal to PopUp/Modal quando o usuário deixa formulário', () => {
-      expect(tagManager.dataLayer[0].experiments[0].experimentDescription).toEqual('PopUp/Modal quando o usuário deixa formulário');
+    it('has description equal to Description Experiment', () => {
+      expect(tagManager.dataLayer[0].experiments[0].experimentDescription).toEqual('Description Experiment');
     });
   });
 
@@ -148,14 +149,11 @@ describe('Tagmanager', () => {
   });
 
   describe('.bindEvents', () => {
-    beforeEach(() => {
-      tagManager.init();
-    });
-
     it('appends gtm-bind attribute', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       const btn = document.getElementsByClassName('btn')[0];
 
+      tagManager.init();
       tagManager.bindEvents();
 
       const attribute = btn.getAttribute('data-gtm-bind');
@@ -164,20 +162,19 @@ describe('Tagmanager', () => {
   });
 
   describe('.clickGAEvent', () => {
-    beforeEach(() => {
-      tagManager.init();
-    });
-
     it('dispatches .eventCategory', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       spyOn(tagManager, 'eventCategory');
+
+      tagManager.init();
+      tagManager.bindEvents();
 
       const btn = document.getElementsByClassName('btn')[0];
       const evt = {
         currentTarget: btn,
       };
 
-      tagManager.clickGAEvent(evt);
+      btn.click(evt);
 
       expect(tagManager.eventCategory).toHaveBeenCalled();
     });
