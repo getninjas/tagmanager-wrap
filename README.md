@@ -8,6 +8,10 @@ Wrapping Google tagmanager and adding some helpers to him
 
 `npm i tagmanager-wrap  --save`
 
+### Demo
+
+`npm run demo`
+
 ### Usage
 
 You can use it via:
