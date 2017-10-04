@@ -1,0 +1,7 @@
+{
+  "extends": "getninjas",
+  "globals": {
+    "tagManager": true,
+    "__html__": true
+  }
+}

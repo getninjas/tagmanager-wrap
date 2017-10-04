@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" />
+  <link rel="stylesheet" href="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css" data-noprefix />
+  <link href="demo.css" rel="stylesheet" />
+  <script src="node_modules/prismjs/prism.js"></script>
+  <script src="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
+  <script src="./dist/tagmanager-wrap.js"></script>
+</head>
+
+<body>
+  <h1>TagManager</h1>
+  <br>
+  <div class="title">
+    <h3>Init (Global)</h3>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var tagManagerDataLayer = [];
+  tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
+    gtmId: 'GTM-T2HGD',
+    startPush: {
+      page_type: "pages:home",
+      path_category: "reformas-e-reparos/pedreiro",
+      experiments: window.experiments || []
+    }
+  });</code></pre>
+  <br>
+  <br>
+  <div class="title">
+    <h3>Init (CommonJs)</h3>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var TagManager = require('tagmanager-wrap');
+
+    var tagManagerDataLayer = [];
+    var tagManager = new TagManager.default(tagManagerDataLayer, {
+      gtmId: 'GTM-T2HGD',
+      startPush: {
+        page_type: "pages:home",
+        path_category: "reformas-e-reparos/pedreiro",
+        experiments: window.experiments || []
+      }
+  });</code></pre>
+  <br>
+  <br>
+  <div class="title">
+    <h3>Init (AMD)</h3>
+  </div>
+  <pre>
+  <code class="language-javascript line-numbers">define(['tagmanager-wrap'], function(TagManager){
+
+    var tagManagerDataLayer = [];
+    var tagManager = new TagManager(tagManagerDataLayer, {
+      gtmId: 'GTM-T2HGD',
+      startPush: {
+        page_type: "pages:home",
+        path_category: "reformas-e-reparos/pedreiro",
+        experiments: window.experiments || []
+      }
+    });
+  });</code></pre>
+  <br>
+  <div class="title">
+    <h3>eventCategory</h3>
+    <button type="button" class="eventCategory">Run</button>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var btnEventCategory = document.getElementsByClassName('eventCategory')[0];
+  btnEventCategory.addEventListener('click', function () {
+
+    tagManager.eventCategory("pre-fill", {
+      eventAction: "success"
+    });
+    console.log(tagManager);
+  });</code></pre>
+  <br>
+  <div class="title">
+    <h3>prependExperiment</h3>
+    <button type="button" class="prependExperiment">Run</button>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
+  btnPrependExperiment.addEventListener('click', function () {
+
+    tagManager.prependExperiment({
+      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+      experimentGoal: 'request conversion rate',
+      experimentId: 'popup-user-leaves-request',
+      experimentPageCategory: ['all'],
+      experimentPageType: ['categories'],
+      experimentTool: 'Abba',
+      experimentType: 'page',
+      experimentVersion: 'demo',
+    });
+    console.log(tagManager);
+  });</code></pre>
+  <br>
+  <div class="title">
+    <h3>virtualPageView</h3>
+    <button type="button" class="virtualPageView">Run</button>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
+  btnVirtualPageView.addEventListener('click', function () {
+
+    tagManager.virtualPageView("/profile/created");
+    console.log(tagManager);
+  });</code></pre>
+  <br>
+  <div class="title">
+    <h3>custom Obj</h3>
+    <button type="button" class="customObj">Run</button>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">var btnCustomObj = document.getElementsByClassName('customObj')[0];
+  btnCustomObj.addEventListener('click', function () {
+
+    tagManager.custom({
+      user_id: 123,
+      event: 'user_info'
+    });
+    console.log(tagManager);
+  });</code></pre>
+  <script src="demo.js"></script>
+</body>
+
+</html>
