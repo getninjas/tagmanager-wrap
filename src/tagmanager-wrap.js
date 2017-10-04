@@ -84,7 +84,7 @@ export default class TagManager {
     const el = evt.currentTarget;
 
     const category = this._getAttribute(el, 'data-gtm-category');
-    const props = this._getProps(el, ['action', 'label', 'value', 'property', 'ddd']);
+    const props = this._getProps(el, ['action', 'label', 'value', 'property']);
 
     this.eventCategory(category, props);
   }
