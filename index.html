@@ -7,16 +7,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link href="node_modules/prismjs/themes/prism.css" rel="stylesheet" />
-  <link rel="stylesheet" href="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css" data-noprefix />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.1/themes/prism.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.1/plugins/line-numbers/prism-line-numbers.css" data-noprefix />
   <link href="demo.css" rel="stylesheet" />
-  <script src="node_modules/prismjs/prism.js"></script>
-  <script src="node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.1/prism.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.1/plugins/line-numbers/prism-line-numbers.js"></script>
   <script src="./dist/tagmanager-wrap.js"></script>
 </head>
 
 <body>
   <h1>TagManager</h1>
+  <br>
+  <div class="title">
+    <h3>Init (ES6)</h3>
+  </div>
+
+  <pre>
+  <code class="language-javascript line-numbers">import TagManager from 'tagmanager-wrap';
+
+  window.tagmanagerDatalayer = [];
+  const tagmanager = new TagManager(window.tagmanagerDatalayer, {
+    gtmId: 'AAABBB000',
+    startPush: {
+      page_type: 'page:price',
+      path_category: 'category/sub-category',
+      experiments: window.experiments || [],
+    },
+  });
+
+  tagmanager.init();
+  tagmanager.bindEvents();</code></pre>
+  <br>
   <br>
   <div class="title">
     <h3>Init (Global)</h3>
@@ -25,10 +46,10 @@
   <pre>
   <code class="language-javascript line-numbers">var tagManagerDataLayer = [];
   tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
-    gtmId: 'GTM-T2HGD',
+    gtmId: 'AAABBB000',
     startPush: {
       page_type: "pages:home",
-      path_category: "reformas-e-reparos/pedreiro",
+      path_category: "category/sub-category",
       experiments: window.experiments || []
     }
   });</code></pre>
@@ -43,10 +64,10 @@
 
     var tagManagerDataLayer = [];
     var tagManager = new TagManager.default(tagManagerDataLayer, {
-      gtmId: 'GTM-T2HGD',
+      gtmId: 'AAABBB000',
       startPush: {
         page_type: "pages:home",
-        path_category: "reformas-e-reparos/pedreiro",
+        path_category: "category/sub-category",
         experiments: window.experiments || []
       }
   });</code></pre>
@@ -60,10 +81,10 @@
 
     var tagManagerDataLayer = [];
     var tagManager = new TagManager(tagManagerDataLayer, {
-      gtmId: 'GTM-T2HGD',
+      gtmId: 'AAABBB000',
       startPush: {
         page_type: "pages:home",
-        path_category: "reformas-e-reparos/pedreiro",
+        path_category: "category/sub-category",
         experiments: window.experiments || []
       }
     });
@@ -94,12 +115,12 @@
   btnPrependExperiment.addEventListener('click', function () {
 
     tagManager.prependExperiment({
-      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
-      experimentGoal: 'request conversion rate',
-      experimentId: 'popup-user-leaves-request',
+      experimentDescription: 'Lorem Ipsum new Description',
+      experimentGoal: 'testing goal',
+      experimentId: 'testing id',
       experimentPageCategory: ['all'],
       experimentPageType: ['categories'],
-      experimentTool: 'Abba',
+      experimentTool: 'testingTool',
       experimentType: 'page',
       experimentVersion: 'demo',
     });
