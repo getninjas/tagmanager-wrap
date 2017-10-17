@@ -17,6 +17,8 @@ Wrapping Google tagmanager and adding some helpers to him
 
 `npm run demo`
 
+`yarn demo`
+
 ### Usage
 
 You can use it via:
