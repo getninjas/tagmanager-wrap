@@ -11,6 +11,8 @@ Wrapping Google tagmanager and adding some helpers to him
 
 `npm i tagmanager-wrap  --save`
 
+`yarn add tagmanager-wrap`
+
 ### Demo
 
 `npm run demo`
