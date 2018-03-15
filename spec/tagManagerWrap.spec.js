@@ -72,11 +72,11 @@ describe('Tagmanager', () => {
     });
 
     it('preppends experiment', () => {
-      expect(tagManager.dataLayer[0].experiments.length).toEqual(1);
+      expect(tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments.length).toEqual(1);
     });
 
     it('has description equal to Description Experiment', () => {
-      expect(tagManager.dataLayer[0].experiments[0].experimentDescription).toEqual('Description Experiment');
+      expect(tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments[0].experimentDescription).toEqual('Description Experiment');
     });
   });
 

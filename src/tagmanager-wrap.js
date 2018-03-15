@@ -21,7 +21,12 @@ export default class TagManager {
   }
 
   prependExperiment(experiment) {
-    this.dataLayer[0].experiments.push(experiment);
+    var lastDataLayerElement = this.dataLayer[this.dataLayer.length - 1];
+    if (lastDataLayerElement.experiments) {
+      this.custom({ event: "split_test", experiments: lastDataLayerElement.experiments.push(experiment) });
+    } else {
+      this.custom({ event: "split_test", experiments: [experiment] });
+    }
   }
 
   virtualPageView(vpname, eventType) {
