@@ -1,7 +1,8 @@
 import TagManager from '../src/tagmanager-wrap';
 
 describe('Tagmanager', () => {
-  const tagManager = new TagManager([], {
+  window.tagManagerDataLayer = [];
+  const tagManager = new TagManager(window.tagManagerDataLayer, {
     gtmId: '222222',
     startPush: {
       page_type: 'pages:demo',
@@ -55,6 +56,8 @@ describe('Tagmanager', () => {
   describe('.prependExperiment', () => {
     beforeEach(() => {
       tagManager.init();
+      tagManager.dataLayer = [];
+
       tagManager.prependExperiment({
         experimentDescription: 'Description Experiment',
         experimentGoal: 'request conversion rate',
@@ -65,10 +68,6 @@ describe('Tagmanager', () => {
         experimentType: 'page',
         experimentVersion: 'demo',
       });
-    });
-
-    afterEach(() => {
-      tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments = [];
     });
 
     it('preppends experiment', () => {
@@ -83,15 +82,13 @@ describe('Tagmanager', () => {
   describe('.virtualPageView', () => {
     beforeEach(() => {
       tagManager.init();
+      tagManager.dataLayer = [];
+
       tagManager.virtualPageView('/profile/created');
     });
 
-    afterEach(() => {
-      tagManager.dataLayer = [];
-    });
-
     it('preppends virtualPageView', () => {
-      expect(tagManager.dataLayer.length).toEqual(2);
+      expect(tagManager.dataLayer.length).toEqual(1);
     });
 
     it('has vpname', () => {
@@ -102,13 +99,11 @@ describe('Tagmanager', () => {
   describe('.eventCategory', () => {
     beforeEach(() => {
       tagManager.init();
+
+      tagManager.dataLayer = [];
       tagManager.eventCategory('pre-fill', {
         eventAction: 'success',
       });
-    });
-
-    afterEach(() => {
-      tagManager.dataLayer = [];
     });
 
     it('preppends eventCategory', () => {
@@ -131,6 +126,8 @@ describe('Tagmanager', () => {
   describe('.customObj', () => {
     beforeEach(() => {
       tagManager.init();
+      tagManager.dataLayer = [];
+
       tagManager.custom({
         user_id: 123,
         event: 'user_info',
@@ -151,6 +148,10 @@ describe('Tagmanager', () => {
   });
 
   describe('.bindEvents', () => {
+    beforeEach(() => {
+      tagManager.dataLayer = [];
+    });
+
     it('appends gtm-bind attribute', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       const btn = document.getElementsByClassName('btn')[0];
@@ -164,6 +165,10 @@ describe('Tagmanager', () => {
   });
 
   describe('.clickGAEvent', () => {
+    beforeEach(() => {
+      tagManager.dataLayer = [];
+    });
+
     it('dispatches .eventCategory', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       spyOn(tagManager, 'eventCategory');
