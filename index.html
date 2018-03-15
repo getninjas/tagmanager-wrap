@@ -25,8 +25,8 @@
   <pre>
   <code class="language-javascript line-numbers">import TagManager from 'tagmanager-wrap';
 
-  window.tagManagerDatalayer = [];
-  const tagmanager = new TagManager(window.tagManagerDatalayer, {
+  window.tagManagerDataLayer = [];
+  const tagmanager = new TagManager(window.tagManagerDataLayer, {
     gtmId: 'AAABBB000',
     startPush: {
       page_type: 'page:price',
@@ -115,12 +115,12 @@
   btnPrependExperiment.addEventListener('click', function () {
 
     tagManager.prependExperiment({
-      experimentDescription: 'Lorem Ipsum new Description',
-      experimentGoal: 'testing goal',
-      experimentId: 'testing id',
+      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+      experimentGoal: 'request conversion rate',
+      experimentId: 'popup-user-leaves-request',
       experimentPageCategory: ['all'],
       experimentPageType: ['categories'],
-      experimentTool: 'testingTool',
+      experimentTool: 'Abba',
       experimentType: 'page',
       experimentVersion: 'demo',
     });
@@ -136,7 +136,7 @@
   <code class="language-javascript line-numbers">var btnVirtualPageView = document.getElementsByClassName('virtualPageView')[0];
   btnVirtualPageView.addEventListener('click', function () {
 
-    tagManager.virtualPageView("/profile/created");
+    tagManager.virtualPageView('/profile/created');
     console.log(tagManager);
   });</code></pre>
   <br>

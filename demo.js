@@ -1,4 +1,4 @@
-const tagManagerDataLayer = [];
+const tagManagerDataLayer = window.tagManagerDataLayer || [];
 tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
   gtmId: 'GTM-T2HGD',
   startPush: {
