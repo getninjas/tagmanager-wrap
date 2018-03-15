@@ -46,12 +46,8 @@ const karmaConfig = function (conf) {
         type: 'text-summary',
       },
       {
-        type: 'html',
-        subdir: 'report-html',
-      },
-      {
         type: 'lcov',
-        subdir: 'report-lcov',
+        subdir: '/',
       },
       ],
     },
