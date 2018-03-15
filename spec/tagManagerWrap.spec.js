@@ -68,7 +68,7 @@ describe('Tagmanager', () => {
     });
 
     afterEach(() => {
-      tagManager.dataLayer[0].experiments = [];
+      tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments = [];
     });
 
     it('preppends experiment', () => {
