@@ -21,12 +21,8 @@ export default class TagManager {
   }
 
   prependExperiment(experiment) {
-    if (this.options.startPush.experiments) {
-      this.options.startPush.experiments.push(experiment);
-      this.custom({ event: 'split_test', experiments: this.options.startPush.experiments });
-    } else {
-      this.custom({ event: 'split_test', experiments: [experiment] });
-    }
+    this.options.startPush.experiments.push(experiment);
+    this.custom({ events: 'split_test', experiments: this.options.startPush.experiments })
   }
 
   virtualPageView(vpname, eventType) {
