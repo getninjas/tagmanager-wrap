@@ -1,5 +1,6 @@
 # TagManager Wrap
 
+[![Build](https://droneci.getninjas.com.br/api/badges/getninjas/tagmanager-wrap/status.svg?branch=master)](https://droneci.getninjas.com.br/getninjas/tagmanager-wrap)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/maintainability)](https://codeclimate.com/github/getninjas/tagmanager-wrap/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/test_coverage)](https://codeclimate.com/github/getninjas/tagmanager-wrap/test_coverage)
 
