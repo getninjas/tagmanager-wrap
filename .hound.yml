@@ -1,4 +1,0 @@
-eslint:
-  enabled: true
-  ignore_file: .eslintignore
-  config_file: .eslintrc.json
