@@ -68,6 +68,7 @@ const karmaConfig = function (conf) {
         base: 'Chrome',
         flags: [
           '--headless',
+          '--no-sandbox',
           '--disable-gpu',
           '--remote-debugging-port=9222',
         ],
