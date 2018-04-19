@@ -3,6 +3,6 @@ pipeline:
     image: getninjas/nodejs:9
     commands:
       - npm install --silent
-      - npm build:js
-      - npm build:js:prod
+      - npm run build:js
+      - npm run build:js:prod
       - npm test
