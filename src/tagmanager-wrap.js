@@ -22,7 +22,8 @@ export default class TagManager {
 
   prependExperiment(experiment) {
     this.options.startPush.experiments.push(experiment);
-    this.custom({ events: 'split_test', experiments: this.options.startPush.experiments })
+
+    this.custom({ event: 'selfDescribingEvent', schema: 'iglu:br.com.getninjas/split_test/jsonschema/1-0-0', data: experiment });
   }
 
   virtualPageView(vpname, eventType) {
@@ -80,7 +81,8 @@ export default class TagManager {
     iframe.src = `https://www.googletagmanager.com/ns.html?id=${this.options.gtmId}`;
     iframe.height = 0;
     iframe.width = 0;
-    iframe.style = 'display:none;visibility:hidden';
+    iframe.style.display = 'none';
+    iframe.style.visibility = 'hidden';
     noScript.appendChild(iframe);
     document.body.appendChild(noScript);
   }

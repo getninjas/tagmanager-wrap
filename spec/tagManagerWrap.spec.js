@@ -56,7 +56,6 @@ describe('Tagmanager', () => {
   describe('.prependExperiment', () => {
     beforeEach(() => {
       tagManager.init();
-      tagManager.dataLayer = [];
 
       tagManager.prependExperiment({
         experimentDescription: 'Description Experiment',
@@ -71,28 +70,30 @@ describe('Tagmanager', () => {
     });
 
     it('preppends experiment', () => {
-      expect(tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments.length).toEqual(1);
+      expect(tagManager.dataLayer[0].experiments.length).toEqual(1);
     });
 
     it('has description equal to Description Experiment', () => {
-      expect(tagManager.dataLayer[tagManager.dataLayer.length - 1].experiments[0].experimentDescription).toEqual('Description Experiment');
+      expect(tagManager.dataLayer[0].experiments[0].experimentDescription).toEqual('Description Experiment');
     });
   });
 
   describe('.virtualPageView', () => {
     beforeEach(() => {
       tagManager.init();
-      tagManager.dataLayer = [];
 
       tagManager.virtualPageView('/profile/created');
     });
 
     it('preppends virtualPageView', () => {
-      expect(tagManager.dataLayer.length).toEqual(1);
+      const result = tagManager.dataLayer.filter(item => item.vpname !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has vpname', () => {
-      expect(tagManager.dataLayer[0].vpname).toEqual('/profile/created');
+      const result = tagManager.dataLayer.filter(item => item.vpname !== undefined);
+      expect(result[0].vpname).toEqual('/profile/created');
     });
   });
 
@@ -100,33 +101,39 @@ describe('Tagmanager', () => {
     beforeEach(() => {
       tagManager.init();
 
-      tagManager.dataLayer = [];
       tagManager.eventCategory('pre-fill', {
         eventAction: 'success',
       });
     });
 
     it('preppends eventCategory', () => {
-      expect(tagManager.dataLayer.length).toEqual(1);
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has event', () => {
-      expect(tagManager.dataLayer[0].event).toEqual('GAEvent');
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result[0].event).toEqual('GAEvent');
     });
 
     it('has eventCategory', () => {
-      expect(tagManager.dataLayer[0].eventCategory).toEqual('pre-fill');
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result[0].eventCategory).toEqual('pre-fill');
     });
 
     it('has eventAction', () => {
-      expect(tagManager.dataLayer[0].eventAction).toEqual('success');
+      const result = tagManager.dataLayer.filter(item => item.eventAction !== undefined);
+
+      expect(result[0].eventAction).toEqual('success');
     });
   });
 
   describe('.customObj', () => {
     beforeEach(() => {
       tagManager.init();
-      tagManager.dataLayer = [];
 
       tagManager.custom({
         user_id: 123,
@@ -135,23 +142,25 @@ describe('Tagmanager', () => {
     });
 
     it('preppends customObj', () => {
-      expect(tagManager.dataLayer.length).toEqual(1);
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has user_id', () => {
-      expect(tagManager.dataLayer[0].user_id).toEqual(123);
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result[0].user_id).toEqual(123);
     });
 
     it('has event', () => {
-      expect(tagManager.dataLayer[0].event).toEqual('user_info');
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result[0].event).toEqual('user_info');
     });
   });
 
   describe('.bindEvents', () => {
-    beforeEach(() => {
-      tagManager.dataLayer = [];
-    });
-
     it('appends gtm-bind attribute', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       const btn = document.getElementsByClassName('btn')[0];
@@ -160,6 +169,7 @@ describe('Tagmanager', () => {
       tagManager.bindEvents();
 
       const attribute = btn.getAttribute('data-gtm-bind');
+
       expect(Boolean(attribute)).toEqual(true);
     });
   });
