@@ -2,7 +2,7 @@ tagManager = new window.tagmanagerWrap.default(window.tagManagerDataLayer, {
   gtmId: 'GTM-T2HGD',
   startPush: {
     page_type: 'pages:home',
-    path_category: 'reformas-e-reparos/pedreiro',
+    path_category: 'custom/slug',
     experiments: window.experiments || [],
   },
 });
@@ -23,7 +23,7 @@ btnPrependExperiment.addEventListener('click', () => {
     event: 'yourCustomEvent',
     schema: 'your:br.com.custom/schema/jsonschema/1-0-0',
     data: {
-      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+      experimentDescription: 'Demo description',
       experimentGoal: 'request conversion rate',
       experimentId: 'popup-user-leaves-request',
       experimentPageCategory: ['all'],
