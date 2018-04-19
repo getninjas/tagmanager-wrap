@@ -58,14 +58,18 @@ describe('Tagmanager', () => {
       tagManager.init();
 
       tagManager.prependExperiment({
-        experimentDescription: 'Description Experiment',
-        experimentGoal: 'request conversion rate',
-        experimentId: 'popup-user-leaves-request',
-        experimentPageCategory: ['all'],
-        experimentPageType: ['categories'],
-        experimentTool: 'Abba',
-        experimentType: 'page',
-        experimentVersion: 'demo',
+        event: 'yourCustomEvent',
+        schema: 'your:br.com.custom/schema/jsonschema/1-0-0',
+        data: {
+          experimentDescription: 'Description Experiment',
+          experimentGoal: 'request conversion rate',
+          experimentId: 'popup-user-leaves-request',
+          experimentPageCategory: ['all'],
+          experimentPageType: ['categories'],
+          experimentTool: 'Abba',
+          experimentType: 'page',
+          experimentVersion: 'demo',
+        },
       });
     });
 

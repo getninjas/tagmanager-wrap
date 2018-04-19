@@ -20,15 +20,20 @@ btnEventCategory.addEventListener('click', () => {
 const btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
 btnPrependExperiment.addEventListener('click', () => {
   tagManager.prependExperiment({
-    experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
-    experimentGoal: 'request conversion rate',
-    experimentId: 'popup-user-leaves-request',
-    experimentPageCategory: ['all'],
-    experimentPageType: ['categories'],
-    experimentTool: 'Abba',
-    experimentType: 'page',
-    experimentVersion: 'demo',
+    event: 'yourCustomEvent',
+    schema: 'your:br.com.custom/schema/jsonschema/1-0-0',
+    data: {
+      experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
+      experimentGoal: 'request conversion rate',
+      experimentId: 'popup-user-leaves-request',
+      experimentPageCategory: ['all'],
+      experimentPageType: ['categories'],
+      experimentTool: 'Abba',
+      experimentType: 'page',
+      experimentVersion: 'demo',
+    },
   });
+
   console.log(tagManager);
 });
 

@@ -20,10 +20,10 @@ export default class TagManager {
     this._appendNoScriptFallBack();
   }
 
-  prependExperiment(experiment) {
-    this.options.startPush.experiments.push(experiment);
+  prependExperiment({ event, schema, data }) {
+    this.options.startPush.experiments.push(data);
 
-    this.custom({ event: 'selfDescribingEvent', schema: 'iglu:br.com.getninjas/split_test/jsonschema/1-0-0', data: experiment });
+    this.custom({ event, schema, data });
   }
 
   virtualPageView(vpname, eventType) {
