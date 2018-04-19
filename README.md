@@ -1,6 +1,5 @@
 # TagManager Wrap
 
-[![Build Status](https://semaphoreci.com/api/v1/iondrimba/tagmanager-wrap/branches/master/badge.svg)](https://semaphoreci.com/iondrimba/tagmanager-wrap)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/maintainability)](https://codeclimate.com/github/getninjas/tagmanager-wrap/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/test_coverage)](https://codeclimate.com/github/getninjas/tagmanager-wrap/test_coverage)
 
