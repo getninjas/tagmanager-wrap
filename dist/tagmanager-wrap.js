@@ -99,10 +99,14 @@
       }
     }, {
       key: 'prependExperiment',
-      value: function prependExperiment(experiment) {
-        this.options.startPush.experiments.push(experiment);
+      value: function prependExperiment(_ref) {
+        var event = _ref.event,
+            schema = _ref.schema,
+            data = _ref.data;
 
-        this.custom({ event: 'selfDescribingEvent', schema: 'iglu:br.com.getninjas/split_test/jsonschema/1-0-0', data: experiment });
+        this.options.startPush.experiments.push(data);
+
+        this.custom({ event: event, schema: schema, data: data });
       }
     }, {
       key: 'virtualPageView',
