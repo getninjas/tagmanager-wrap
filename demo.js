@@ -1,9 +1,8 @@
-const tagManagerDataLayer = [];
-tagManager = new window.tagmanagerWrap.default(tagManagerDataLayer, {
+tagManager = new window.tagmanagerWrap.default(window.tagManagerDataLayer, {
   gtmId: 'GTM-T2HGD',
   startPush: {
     page_type: 'pages:home',
-    path_category: 'reformas-e-reparos/pedreiro',
+    path_category: 'custom/slug',
     experiments: window.experiments || [],
   },
 });
@@ -21,15 +20,20 @@ btnEventCategory.addEventListener('click', () => {
 const btnPrependExperiment = document.getElementsByClassName('prependExperiment')[0];
 btnPrependExperiment.addEventListener('click', () => {
   tagManager.prependExperiment({
-    experimentDescription: 'PopUp/Modal quando o usuário deixa formulário',
-    experimentGoal: 'request conversion rate',
-    experimentId: 'popup-user-leaves-request',
-    experimentPageCategory: ['all'],
-    experimentPageType: ['categories'],
-    experimentTool: 'Abba',
-    experimentType: 'page',
-    experimentVersion: 'demo',
+    event: 'yourCustomEvent',
+    schema: 'your:br.com.custom/schema/jsonschema/1-0-0',
+    data: {
+      experimentDescription: 'Demo description',
+      experimentGoal: 'request conversion rate',
+      experimentId: 'popup-user-leaves-request',
+      experimentPageCategory: ['all'],
+      experimentPageType: ['categories'],
+      experimentTool: 'Abba',
+      experimentType: 'page',
+      experimentVersion: 'demo',
+    },
   });
+
   console.log(tagManager);
 });
 

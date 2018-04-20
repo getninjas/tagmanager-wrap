@@ -1,7 +1,11 @@
-# Tagmanager Wrap
+# TagManager Wrap
 
-Wrapping Google tagmanager and adding some helpers to him
-* This script appends automatically the googleTagmanager script.
+[![Build](https://droneci.getninjas.com.br/api/badges/getninjas/tagmanager-wrap/status.svg?branch=master)](https://droneci.getninjas.com.br/getninjas/tagmanager-wrap)
+[![Maintainability](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/maintainability)](https://codeclimate.com/github/getninjas/tagmanager-wrap/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/dce9f6406858d2069bf4/test_coverage)](https://codeclimate.com/github/getninjas/tagmanager-wrap/test_coverage)
+
+Wrapping Google TagManager and adding some helpers to him
+* This script appends automatically the googleTagManager script.
 * It also adds an iframe inside a noscript tag for non-js fallback
 
 ### Documentation

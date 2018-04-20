@@ -1,0 +1,8 @@
+pipeline:
+  build:
+    image: getninjas/nodejs:9-chrome64
+    commands:
+      - npm install --silent
+      - npm run build:js
+      - npm run build:js:prod
+      - npm test
