@@ -10,7 +10,6 @@ before_install:
 - ./cc-test-reporter before-build
 before_script:
 - npm install
-- npm test
 script:
 - npm run build:js
 - npm run build:js:prod
