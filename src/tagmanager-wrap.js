@@ -47,7 +47,7 @@ export default class TagManager {
   }
 
   bindEvents() {
-    const gtmElements = [...document.querySelectorAll('[data-gtm-event="ga-event"]')];
+    const gtmElements = [].slice.call(document.querySelectorAll('[data-gtm-event="ga-event"]'));
 
     gtmElements.map((el) => {
       if (!el.getAttribute('data-gtm-bind')) {
