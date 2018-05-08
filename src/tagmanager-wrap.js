@@ -47,14 +47,16 @@ export default class TagManager {
   }
 
   bindEvents() {
-    const gtmElements = document.querySelectorAll('[data-gtm-event="ga-event"]');
+    const gtmElements = [...document.querySelectorAll('[data-gtm-event="ga-event"]')];
 
-    gtmElements.forEach(function (el) {
+    gtmElements.map((el) => {
       if (!el.getAttribute('data-gtm-bind')) {
         el.addEventListener('click', this._clickGAEvent.bind(this));
         el.setAttribute('data-gtm-bind', true);
       }
-    }, this);
+
+      return el;
+    });
 
     return gtmElements;
   }
