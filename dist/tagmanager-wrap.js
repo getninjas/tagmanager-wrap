@@ -136,14 +136,18 @@
     }, {
       key: 'bindEvents',
       value: function bindEvents() {
-        var gtmElements = document.querySelectorAll('[data-gtm-event="ga-event"]');
+        var _this = this;
 
-        gtmElements.forEach(function (el) {
+        var gtmElements = [].slice.call(document.querySelectorAll('[data-gtm-event="ga-event"]'));
+
+        gtmElements.map(function (el) {
           if (!el.getAttribute('data-gtm-bind')) {
-            el.addEventListener('click', this._clickGAEvent.bind(this));
+            el.addEventListener('click', _this._clickGAEvent.bind(_this));
             el.setAttribute('data-gtm-bind', true);
           }
-        }, this);
+
+          return el;
+        });
 
         return gtmElements;
       }
@@ -190,11 +194,11 @@
     }, {
       key: '_getProps',
       value: function _getProps(el, keys) {
-        var _this = this;
+        var _this2 = this;
 
         return keys.reduce(function (previousValue, currentValue) {
-          var key = 'event' + _this._captalize(currentValue);
-          var val = _this._getAttribute(el, 'data-gtm-' + currentValue);
+          var key = 'event' + _this2._captalize(currentValue);
+          var val = _this2._getAttribute(el, 'data-gtm-' + currentValue);
 
           return _extends({}, previousValue, _defineProperty({}, key, val));
         }, {});
