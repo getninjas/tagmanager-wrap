@@ -99,8 +99,14 @@
       }
     }, {
       key: 'prependExperiment',
-      value: function prependExperiment(experiment) {
-        this.dataLayer[0].experiments.push(experiment);
+      value: function prependExperiment(_ref) {
+        var event = _ref.event,
+            schema = _ref.schema,
+            data = _ref.data;
+
+        this.options.startPush.experiments.push(data);
+
+        this.custom({ event: event, schema: schema, data: data });
       }
     }, {
       key: 'virtualPageView',
@@ -130,14 +136,18 @@
     }, {
       key: 'bindEvents',
       value: function bindEvents() {
-        var gtmElements = document.querySelectorAll('[data-gtm-event="ga-event"]');
+        var _this = this;
 
-        gtmElements.forEach(function (el) {
+        var gtmElements = [].slice.call(document.querySelectorAll('[data-gtm-event="ga-event"]'));
+
+        gtmElements.map(function (el) {
           if (!el.getAttribute('data-gtm-bind')) {
-            el.addEventListener('click', this._clickGAEvent.bind(this));
+            el.addEventListener('click', _this._clickGAEvent.bind(_this));
             el.setAttribute('data-gtm-bind', true);
           }
-        }, this);
+
+          return el;
+        });
 
         return gtmElements;
       }
@@ -151,6 +161,10 @@
         script.innerHTML = '(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ \'gtm.start\': new Date().getTime(), event: \'gtm.js\' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != \'dataLayer\' ? \'&l=\' + l : \'\'; j.async = true; j.src = \'https://www.googletagmanager.com/gtm.js?id=\' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, \'script\', \'tagManagerDataLayer\', \'' + this.options.gtmId + '\');';
 
         document.body.appendChild(script);
+
+        _extends(window.tagManagerDataLayer, this.dataLayer);
+
+        this.dataLayer = window.tagManagerDataLayer;
       }
     }, {
       key: '_appendNoScriptFallBack',
@@ -162,7 +176,8 @@
         iframe.src = 'https://www.googletagmanager.com/ns.html?id=' + this.options.gtmId;
         iframe.height = 0;
         iframe.width = 0;
-        iframe.style = 'display:none;visibility:hidden';
+        iframe.style.display = 'none';
+        iframe.style.visibility = 'hidden';
         noScript.appendChild(iframe);
         document.body.appendChild(noScript);
       }
@@ -172,18 +187,18 @@
         var el = evt.currentTarget;
 
         var category = this._getAttribute(el, 'data-gtm-category');
-        var props = this._getProps(el, ['action', 'label', 'value', 'property', 'ddd']);
+        var props = this._getProps(el, ['action', 'label', 'value', 'property']);
 
         this.eventCategory(category, props);
       }
     }, {
       key: '_getProps',
       value: function _getProps(el, keys) {
-        var _this = this;
+        var _this2 = this;
 
         return keys.reduce(function (previousValue, currentValue) {
-          var key = 'event' + _this._captalize(currentValue);
-          var val = _this._getAttribute(el, 'data-gtm-' + currentValue);
+          var key = 'event' + _this2._captalize(currentValue);
+          var val = _this2._getAttribute(el, 'data-gtm-' + currentValue);
 
           return _extends({}, previousValue, _defineProperty({}, key, val));
         }, {});

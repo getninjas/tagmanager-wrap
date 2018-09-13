@@ -1,7 +1,8 @@
 import TagManager from '../src/tagmanager-wrap';
 
 describe('Tagmanager', () => {
-  const tagManager = new TagManager([], {
+  window.tagManagerDataLayer = [];
+  const tagManager = new TagManager(window.tagManagerDataLayer, {
     gtmId: '222222',
     startPush: {
       page_type: 'pages:demo',
@@ -55,20 +56,21 @@ describe('Tagmanager', () => {
   describe('.prependExperiment', () => {
     beforeEach(() => {
       tagManager.init();
-      tagManager.prependExperiment({
-        experimentDescription: 'Description Experiment',
-        experimentGoal: 'request conversion rate',
-        experimentId: 'popup-user-leaves-request',
-        experimentPageCategory: ['all'],
-        experimentPageType: ['categories'],
-        experimentTool: 'Abba',
-        experimentType: 'page',
-        experimentVersion: 'demo',
-      });
-    });
 
-    afterEach(() => {
-      tagManager.dataLayer[0].experiments = [];
+      tagManager.prependExperiment({
+        event: 'yourCustomEvent',
+        schema: 'your:br.com.custom/schema/jsonschema/1-0-0',
+        data: {
+          experimentDescription: 'Description Experiment',
+          experimentGoal: 'request conversion rate',
+          experimentId: 'popup-user-leaves-request',
+          experimentPageCategory: ['all'],
+          experimentPageType: ['categories'],
+          experimentTool: 'Abba',
+          experimentType: 'page',
+          experimentVersion: 'demo',
+        },
+      });
     });
 
     it('preppends experiment', () => {
@@ -83,54 +85,60 @@ describe('Tagmanager', () => {
   describe('.virtualPageView', () => {
     beforeEach(() => {
       tagManager.init();
+
       tagManager.virtualPageView('/profile/created');
     });
 
-    afterEach(() => {
-      tagManager.dataLayer = [];
-    });
-
     it('preppends virtualPageView', () => {
-      expect(tagManager.dataLayer.length).toEqual(2);
+      const result = tagManager.dataLayer.filter(item => item.vpname !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has vpname', () => {
-      expect(tagManager.dataLayer[0].vpname).toEqual('/profile/created');
+      const result = tagManager.dataLayer.filter(item => item.vpname !== undefined);
+      expect(result[0].vpname).toEqual('/profile/created');
     });
   });
 
   describe('.eventCategory', () => {
     beforeEach(() => {
       tagManager.init();
+
       tagManager.eventCategory('pre-fill', {
         eventAction: 'success',
       });
     });
 
-    afterEach(() => {
-      tagManager.dataLayer = [];
-    });
-
     it('preppends eventCategory', () => {
-      expect(tagManager.dataLayer.length).toEqual(1);
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has event', () => {
-      expect(tagManager.dataLayer[0].event).toEqual('GAEvent');
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result[0].event).toEqual('GAEvent');
     });
 
     it('has eventCategory', () => {
-      expect(tagManager.dataLayer[0].eventCategory).toEqual('pre-fill');
+      const result = tagManager.dataLayer.filter(item => item.eventCategory !== undefined);
+
+      expect(result[0].eventCategory).toEqual('pre-fill');
     });
 
     it('has eventAction', () => {
-      expect(tagManager.dataLayer[0].eventAction).toEqual('success');
+      const result = tagManager.dataLayer.filter(item => item.eventAction !== undefined);
+
+      expect(result[0].eventAction).toEqual('success');
     });
   });
 
   describe('.customObj', () => {
     beforeEach(() => {
       tagManager.init();
+
       tagManager.custom({
         user_id: 123,
         event: 'user_info',
@@ -138,15 +146,21 @@ describe('Tagmanager', () => {
     });
 
     it('preppends customObj', () => {
-      expect(tagManager.dataLayer.length).toEqual(1);
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result.length).toEqual(1);
     });
 
     it('has user_id', () => {
-      expect(tagManager.dataLayer[0].user_id).toEqual(123);
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result[0].user_id).toEqual(123);
     });
 
     it('has event', () => {
-      expect(tagManager.dataLayer[0].event).toEqual('user_info');
+      const result = tagManager.dataLayer.filter(item => item.user_id !== undefined);
+
+      expect(result[0].event).toEqual('user_info');
     });
   });
 
@@ -159,11 +173,16 @@ describe('Tagmanager', () => {
       tagManager.bindEvents();
 
       const attribute = btn.getAttribute('data-gtm-bind');
+
       expect(Boolean(attribute)).toEqual(true);
     });
   });
 
   describe('.clickGAEvent', () => {
+    beforeEach(() => {
+      tagManager.dataLayer = [];
+    });
+
     it('dispatches .eventCategory', () => {
       document.body.innerHTML = __html__['spec/fixtures/index.html'];
       spyOn(tagManager, 'eventCategory');

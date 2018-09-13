@@ -46,12 +46,8 @@ const karmaConfig = function (conf) {
         type: 'text-summary',
       },
       {
-        type: 'html',
-        subdir: 'report-html',
-      },
-      {
         type: 'lcov',
-        subdir: 'report-lcov',
+        subdir: '/',
       },
       ],
     },
@@ -72,6 +68,7 @@ const karmaConfig = function (conf) {
         base: 'Chrome',
         flags: [
           '--headless',
+          '--no-sandbox',
           '--disable-gpu',
           '--remote-debugging-port=9222',
         ],
