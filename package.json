@@ -36,6 +36,7 @@
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^23.6.0",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-airbnb": "^2.6.0",
@@ -54,7 +55,6 @@
     "npm-run-all": "^3.1.2",
     "onchange": "^3.2.1",
     "prismjs": "^1.8.1",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1"
+    "jest": "^23.6.0"
   }
 }
