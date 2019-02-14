@@ -1,4 +1,5 @@
 import TagManager from '../src/tagmanager-wrap';
+import fs from 'fs';
 
 describe('Tagmanager', () => {
   window.tagManagerDataLayer = [];
@@ -35,7 +36,7 @@ describe('Tagmanager', () => {
 
   describe('.init', () => {
     beforeEach(() => {
-      document.body.innerHTML = __html__['spec/fixtures/index.html'];
+      document.body.innerHTML = fs.readFileSync(`${__dirname}/fixtures/index.html`)
       tagManager.init();
     });
 
@@ -166,7 +167,7 @@ describe('Tagmanager', () => {
 
   describe('.bindEvents', () => {
     it('appends gtm-bind attribute', () => {
-      document.body.innerHTML = __html__['spec/fixtures/index.html'];
+      document.body.innerHTML = fs.readFileSync(`${__dirname}/fixtures/index.html`)
       const btn = document.getElementsByClassName('btn')[0];
 
       tagManager.init();
@@ -184,7 +185,7 @@ describe('Tagmanager', () => {
     });
 
     it('dispatches .eventCategory', () => {
-      document.body.innerHTML = __html__['spec/fixtures/index.html'];
+      document.body.innerHTML = fs.readFileSync(`${__dirname}/fixtures/index.html`)
       spyOn(tagManager, 'eventCategory');
 
       tagManager.init();
