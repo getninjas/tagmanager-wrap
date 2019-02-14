@@ -1,5 +1,5 @@
 import TagManager from '../src/tagmanager-wrap';
-import fs from 'fs'
+import fs from 'fs';
 
 describe('Tagmanager', () => {
   window.tagManagerDataLayer = [];
