@@ -70,7 +70,7 @@ export default class TagManager {
 
     document.body.appendChild(script);
 
-    Object.assign(window.tagManagerDataLayer, this.dataLayer);
+    this.dataLayer.map(window.tagManagerDataLayer.push);
 
     this.dataLayer = window.tagManagerDataLayer;
   }
