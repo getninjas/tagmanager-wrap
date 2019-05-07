@@ -1,6 +1,6 @@
 {
   "name": "tagmanager-wrap",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Wrapping Google tagmanager and adding some helpers to him",
   "main": "dist/tagmanager-wrap.js",
   "repository": {
