@@ -40,16 +40,12 @@ describe('Tagmanager', () => {
       tagManager.init();
     });
 
-    it('appends async script', () => {
-      const scriptTag = document.querySelector('[data-id="google-tagmanager"]');
-
-      expect(scriptTag).not.toBeNull();
+    it('data layer stills an array', () => {
+      expect(tagManager.dataLayer instanceof Array).toEqual(true);
     });
 
-    it('appends noscript fallback', () => {
-      const noScript = document.querySelector('[data-id="noscript-google-tagmanager"]');
-
-      expect(noScript).not.toBeNull();
+    it('data layer should not be empty', () => {
+      expect(tagManager.dataLayer.length).not.toEqual(0);
     });
   });
 
