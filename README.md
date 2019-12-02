@@ -6,7 +6,7 @@
 
 Wrapping Google TagManager and adding some helpers to it.
 
-### Untill v3.2.1
+### Until v3.2.1
 * This script appends automatically the googleTagManager script.
 * It also adds an iframe inside a noscript tag for non-js fallback
 
